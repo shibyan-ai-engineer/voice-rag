@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friday - Voice RAG Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="icon" href="/static/favicon.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Friday</h1>
+            <p class="subtitle">Your Voice-Activated Document Assistant</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Visual Feedback Area -->
+            <div class="visual-feedback">
+                <div id="visual-feedback-container" class="animation-container">
+                    <!-- Listening for wake word animation -->
+                    <div id="listening-animation" class="animation listening-animation active">
+                        <div class="circle">
+                            <div class="inner-circle">
+                                <div class="sound-wave">
+                                    <div class="sound-bar"></div>
+                                    <div class="sound-bar"></div>
+                                    <div class="sound-bar"></div>
+                                    <div class="sound-bar"></div>
+                                    <div class="sound-bar"></div>
+                                    <div class="sound-bar"></div>
+                                    <div class="sound-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wake word detected animation -->
+                    <div id="wakeword-animation" class="animation wakeword-animation">
+                        <div class="pulse-circle">
+                            <div class="checkmark"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Listening for prompt animation -->
+                    <div id="recording-animation" class="animation recording-animation">
+                        <div class="mic-container">
+                            <div class="mic">
+                                <div class="mic-stand"></div>
+                                <div class="mic-base"></div>
+                            </div>
+                            <div class="sound-waves"></div>
+                            <div class="sound-waves"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Processing query animation -->
+                    <div id="processing-animation" class="animation processing-animation">
+                        <div class="gear-container">
+                            <div class="gear gear-large">
+                                <div class="gear-teeth">
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                </div>
+                            </div>
+                            <div class="gear gear-medium">
+                                <div class="gear-teeth">
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                </div>
+                            </div>
+                            <div class="gear gear-small">
+                                <div class="gear-teeth">
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Speaking response animation -->
+                    <div id="speaking-animation" class="animation speaking-animation">
+                        <div class="equalizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Error animation -->
+                    <div id="error-animation" class="animation error-animation">
+                        <div class="error-icon">
+                            <div class="error-circle"></div>
+                            <div class="error-x"></div>
+                        </div>
+                    </div>
+                </div>
+                <p id="status-message">Waiting for wake word "Friday"...</p>
+            </div>
+
+            <!-- Conversation Area -->
+            <div class="conversation-area">
+                <div class="query-box">
+                    <h3>Your Query:</h3>
+                    <p id="user-query-display">Waiting for your question...</p>
+                </div>
+
+                <div class="response-box">
+                    <h3>Response:</h3>
+                    <p id="bot-response-display">I'll answer your question when you ask one.</p>
+                </div>
+            </div>
+
+            <!-- PDF Upload Area -->
+            <div class="pdf-upload">
+                <h3>Upload PDF Document</h3>
+                <div id="current-document" class="current-document-info">
+                    <p>Currently loaded: <span id="current-document-name">No document loaded</span></p>
+                </div>
+                <form id="pdf-upload-form">
+                    <div class="file-upload">
+                        <input type="file" id="pdf-upload" accept=".pdf" hidden>
+                        <button type="button" id="pdf-upload-btn" class="btn">Select PDF File</button>
+                        <span id="file-name">No file selected</span>
+                    </div>
+                    <button type="submit" id="pdf-submit-btn" class="btn btn-primary" disabled>Upload PDF</button>
+                </form>
+                <p id="pdf-status"></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Say "Friday" to activate, then ask your question about the document.</p>
+        </footer>
+    </div>
+
+    <!-- Hidden Audio Player -->
+    <audio id="bot-audio-player" hidden></audio>
+
+    <!-- Main App Script -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

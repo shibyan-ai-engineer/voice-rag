@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+
+# Data files
+data/temp_audio/*
+!data/temp_audio/.gitkeep
+data/uploads/*
+!data/uploads/.gitkeep
+faiss_index/*
+!faiss_index/.gitkeep
+
+# Log files
+logs/*
+!logs/.gitkeep
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Audio files in project root
+*.wav
+
+# Temporary files
+*.tmp
+
+# MLX models cache
+mlx_models/
+
+# Ignore reference file
+voice-rag.py

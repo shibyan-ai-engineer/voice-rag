@@ -1,0 +1,391 @@
+/* Main Styles for Voice RAG UI */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #1abc9c;
+    --text-color: #333;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --border-color: #ddd;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    position: relative;
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 2.8rem;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+}
+
+header h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+.subtitle {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Main Content */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .main-content {
+        grid-template-columns: 2fr 2fr;
+        gap: 40px;
+    }
+    
+    .visual-feedback {
+        grid-column: 1 / -1;
+        margin-bottom: 40px;
+    }
+    
+    #visual-feedback-container {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 25px;
+    }
+    
+    #status-message {
+        font-size: 1.4rem;
+    }
+}
+
+/* Visual Feedback Area */
+.visual-feedback {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#visual-feedback-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: var(--light-color);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+#status-message {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+#status-message.listening {
+    color: var(--secondary-color);
+}
+
+#status-message.recording {
+    color: #e74c3c;
+}
+
+#status-message.processing {
+    color: #9b59b6;
+}
+
+#status-message.speaking {
+    color: #3498db;
+}
+
+#status-message.error {
+    color: #e74c3c;
+}
+
+/* Conversation Area */
+.conversation-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.query-box, .response-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.query-box {
+    border-left-color: var(--secondary-color);
+}
+
+.response-box {
+    border-left-color: var(--accent-color);
+}
+
+.query-box:hover, .response-box:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.query-box h3, .response-box h3 {
+    margin-bottom: 12px;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.query-box h3:before {
+    content: "🗣️";
+    margin-right: 8px;
+}
+
+.response-box h3:before {
+    content: "🤖";
+    margin-right: 8px;
+}
+
+#user-query-display, #bot-response-display {
+    min-height: 60px;
+    line-height: 1.6;
+    color: var(--dark-color);
+    font-size: 1.05rem;
+}
+
+/* PDF Upload Area */
+.pdf-upload {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.pdf-upload:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.pdf-upload h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.pdf-upload h3:before {
+    content: "📄";
+    margin-right: 8px;
+}
+
+.current-document-info {
+    background-color: #f0f7ff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #3498db;
+}
+
+.current-document-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+}
+
+#current-document-name {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.file-upload {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+#file-name {
+    margin-left: 10px;
+    color: var(--dark-color);
+    font-size: 0.95rem;
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    background-color: #e9ecef;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#stop-recording-btn {
+    background-color: #e74c3c;
+    color: white;
+    animation: pulse-button 1.5s infinite alternate;
+}
+
+#stop-recording-btn:hover {
+    background-color: #c0392b;
+}
+
+@keyframes pulse-button {
+    0% {
+        box-shadow: 0 0 5px rgba(231, 76, 60, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(231, 76, 60, 0.8);
+    }
+}
+
+#pdf-submit-btn {
+    margin-left: 10px;
+}
+
+#pdf-status {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 25px 0 15px;
+    border-top: 2px solid var(--border-color);
+    color: var(--dark-color);
+    font-size: 1rem;
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(245,247,250,1) 100%);
+    border-radius: 0 0 8px 8px;
+}
+
+footer p {
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.5;
+    position: relative;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Animation for status change */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+/* Status colors */
+.listening {
+    color: var(--secondary-color);
+}
+
+.recording {
+    color: var(--accent-color);
+}
+
+.processing {
+    color: var(--primary-color);
+}
+
+.speaking {
+    color: var(--accent-color);
+}
+
+.error {
+    color: #e74c3c;
+}
