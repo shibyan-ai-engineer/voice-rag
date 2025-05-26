@@ -245,16 +245,6 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload</code></pre>
   <blockquote>"What are the eligibility requirements mentioned?"</blockquote>
 </div>
 
-<style>
-.example-queries blockquote {
-  background: #f9f9f9;
-  border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  font-style: italic;
-}
-</style>
-
 ## 🔌 API Endpoints
 
 <div align="center">
