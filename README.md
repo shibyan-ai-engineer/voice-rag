@@ -200,7 +200,7 @@ ollama pull gemma3:4b-it-qat
     <pre><code class="language-bash"># Using the run script
 python run.py
 
-# Or directly with uvicorn
+### Or directly with uvicorn
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload</code></pre>
   </li>
   <li>
